@@ -1,0 +1,8 @@
+openai>=1.40.0
+python-dotenv>=1.0.1
+PyYAML>=6.0.2
+pandas>=2.2.2
+matplotlib>=3.9.0
+jiwer>=3.0.4
+scikit-learn>=1.5.0
+yt-dlp>=2025.1.15

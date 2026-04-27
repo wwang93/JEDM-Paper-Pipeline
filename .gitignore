@@ -1,0 +1,16 @@
+.env
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+
+# Local datasets and generated outputs
+data/raw/
+data/interim/
+data/processed/
+data/results/
+data/external/paper_meta_data/
+
+# OS files
+.DS_Store
+Thumbs.db

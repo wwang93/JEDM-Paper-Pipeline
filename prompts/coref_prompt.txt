@@ -1,0 +1,6 @@
+Below is a paragraph of text.
+Please replace each pronoun (he, she, they, etc.) with the correct noun or name it refers to.
+Keep all other words unchanged.
+
+Text to review:
+{text}

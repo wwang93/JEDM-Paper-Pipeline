@@ -30,15 +30,25 @@ class OpenAITextEnhancer:
         last_err: Exception | None = None
         for _ in range(self.max_retries):
             try:
-                response = self.client.chat.completions.create(
-                    model=self.model,
-                    messages=[
+                payload = {
+                    "model": self.model,
+                    "messages": [
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt},
                     ],
-                    temperature=0.0,
-                    top_p=1.0,
-                )
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                }
+                try:
+                    response = self.client.chat.completions.create(**payload)
+                except Exception as exc:  # noqa: BLE001
+                    msg = str(exc)
+                    if "temperature" in msg and "default (1)" in msg:
+                        payload.pop("temperature", None)
+                        payload.pop("top_p", None)
+                        response = self.client.chat.completions.create(**payload)
+                    else:
+                        raise
                 return response.choices[0].message.content.strip()
             except Exception as exc:  # noqa: BLE001
                 last_err = exc

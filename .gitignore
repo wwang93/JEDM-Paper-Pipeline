@@ -10,6 +10,11 @@ data/interim/
 data/processed/
 data/results/
 data/external/paper_meta_data/
+data/*.xlsx
+data/*compare.csv
+
+# Local drafting and future extensions (not for repo)
+_local_extensions/
 
 # OS files
 .DS_Store

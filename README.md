@@ -5,6 +5,13 @@ JEDM Speical Issue for LLMs in Qual Research: LLM-Assisted Transcript Preprocess
 
 This repository now includes a local Python pipeline under `src/jedm_pipeline` and runnable scripts under `scripts`.
 
+### Repository Scope
+
+This GitHub repository keeps code, prompts, configs, and reproducible scripts that are directly tied to the paper workflow.
+
+- Included: pipeline code in `src/`, execution scripts in `scripts/`, and reproducibility docs/configs.
+- Kept local only: manuscript drafts, exploratory artifacts, and local data outputs (see `.gitignore` and `_local_extensions/`).
+
 ### 1) Install
 
 ```bash

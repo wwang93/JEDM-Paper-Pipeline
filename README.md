@@ -12,6 +12,11 @@ This GitHub repository keeps code, prompts, configs, and reproducible scripts th
 - Included: pipeline code in `src/`, execution scripts in `scripts/`, and reproducibility docs/configs.
 - Kept local only: manuscript drafts, exploratory artifacts, and local data outputs (see `.gitignore` and `_local_extensions/`).
 
+### Paper-Facing Data Files
+
+Current manuscript-facing CSV outputs are versioned in `data/paper_release/`.
+See `data/paper_release/README.md` for file-level descriptions.
+
 ### 1) Install
 
 ```bash

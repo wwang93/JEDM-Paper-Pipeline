@@ -59,6 +59,27 @@ RQ2 (entity-level NER metrics):
 python scripts/run_eval_rq2.py --config configs/default.yaml --gold-csv path/to/GoldNER.csv --asr-csv path/to/ASRNER.csv --coref-csv path/to/LLMscore.csv --ner-csv path/to/LLMsNER.csv
 ```
 
+RQ2 (revised two-step workflow used in manuscript):
+
+1) Validate model coding quality on the 600-token human-consensus benchmark (compare models):
+
+```bash
+python scripts/run_reagan_token_eval.py --config configs/default.yaml --model gpt-4o --n 600 --output-dir data/processed/reagan_llm_eval
+python scripts/run_reagan_token_eval.py --config configs/default.yaml --model gpt-5.5 --n 600 --output-dir data/processed/reagan_llm_eval_gpt55
+```
+
+2) Apply the selected model to all 48 ASR transcripts and produce corpus-level entity profile summaries:
+
+```bash
+python scripts/run_full_corpus_token_annotation.py --config configs/default.yaml --model gpt-5.5 --input-dir "data/external/paper_meta_data/Paper Meta Data/USHistory_raw_txts" --codebook-xlsx "data/Human_The_Reagan_Revolution_Crash_Course_US_History_43_en_one_column_words.xlsx" --output-dir data/processed/full_corpus_llm55_alltokens_v1
+python scripts/run_entity_profile_summary.py --labels-csv data/processed/full_corpus_llm55_alltokens_v1/all_docs_token_labels.csv --output-dir data/processed/full_corpus_llm55_alltokens_v1
+```
+
+This produces:
+
+- `rq2_entity_profile_mention_summary.csv` (used for Table 1 style corpus entity profile)
+- `rq2_entity_profile_token_summary.csv` (token-count variant)
+
 RQ3 topic modeling:
 
 ```bash
